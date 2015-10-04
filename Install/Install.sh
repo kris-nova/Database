@@ -20,37 +20,57 @@ echo '...done'
 # It is critical that we also add it here
 #
 echo '--- Installing dependencies ---'
-yum install -y gcc gcc-c++ screen vim nano unzip curl wget man git strace emacs
+yum install -y gcc gcc-c++ screen vim nano unzip curl wget man git strace emacs kernel-devel
+mkdir /data
 echo '...done'
-
 
 ##
 # Install Cassandra
 #
-echo '--- Installing dependencies ---'
+echo '--- Installing Cassandra ---'
 yum install -y java
-cp -vp /workspace/Database/Install/Repo/Datastax /etc/yum.repos.d/datastax.repo
+cp -vp /workspace/Database/Install/Documents/Cassandra/datastax.repo /etc/yum.repos.d/datastax.repo
 yum -y install dsc20
-chkconfig cassandra on #Turn on on boot
+rm -rf /etc/cassandra/conf
+mkdir /etc/cassandra/conf
+cp -vp /workspace/Database/Install/Documents/Cassandra/cassandra.yaml /etc/cassandra/conf/cassandra.yaml #Cassandra Configure file
+cp -vp /workspace/Database/Install/Documents/Cassandra/log4j-server.properties /etc/cassandra/conf/log4j-server.properties #Cassandra log4j file
+cp -vp /workspace/Database/Install/Documents/Cassandra/cassandra /etc/init.d/cassandra #Cassandra init rc script
+service cassandra start
+service cassandra stop
+
+
+
+##
+# Install ElasticSearch
+# 
+echo '--- Installing ElasticSearch ---'
+rpm --import http://packages.elasticsearch.org/GPG-KEY-elasticsearch
+cp -vp /workspace/Database/Install/Documents/ElasticSearch/elasticsearch.repo /etc/yum.repos.d/elasticsearch.repo
+sudo yum -y install elasticsearch
+service elasticsearch start
+service elasticsearch stop
 echo '...done'
 
 ##
-# Install Composer because we all enjoy deployable code
+# Install Indexer
 #
-echo '--- Installing composer ---'
-if [[ ! -f /usr/local/bin/composer ]]; then
-    curl -s https://getcomposer.org/installer | php
-	# Make Composer available globally
-	mv composer.phar /usr/local/bin/composer
-else
-	echo '[composer already installed]'
-fi
+##
+# Install ElasticSearch
+# 
+echo '--- Installing Indexer ---'
+# ..
 echo '...done'
 
-
-
-
-
+##
+# Install Indexer
+#
+##
+# Install ElasticSearch
+# 
+echo '--- Installing Indexer ---'
+# ..
+echo '...done'
 
 
 
@@ -75,3 +95,5 @@ echo '**************************************************************************
 ##
 # We should now have an updated and awesome dev server!
 #
+service cassandra start
+service elasticsearch start
