@@ -20,7 +20,7 @@ echo '...done'
 # It is critical that we also add it here
 #
 echo '--- Installing dependencies ---'
-yum install -y gcc gcc-c++ screen vim nano unzip curl wget man git strace emacs kernel-devel
+yum install -y gcc gcc-c++ screen vim nano unzip curl wget man git strace emacs kernel-devel java-devel
 mkdir /data
 echo '...done'
 

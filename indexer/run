@@ -1,0 +1,26 @@
+#!/bin/bash
+
+##
+#
+# Useful for you know.. compiling and running real time ;)
+# 
+
+#echo "compiling.."
+
+javac -d ../bin \
+Indexer.java \
+config/*.java \
+debug/*.java
+
+
+#echo "running.."
+cd ../bin
+#echo ""
+#echo ""
+#echo ""
+java indexer.Indexer "$@"
+#echo ""
+#echo ""
+#echo ""
+#echo "returning.."
+cd indexer
