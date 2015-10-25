@@ -1,4 +1,4 @@
-package indexer.config;
+package com.soundeavor.indexer.config;
 
 import indexer.debug.Debug;
 import java.util.HashMap;

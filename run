@@ -7,14 +7,14 @@
 
 #echo "compiling.."
 
-javac -d ../bin \
-Indexer.java \
-config/*.java \
-debug/*.java
+javac -d bin \
+src/main/java/com/soundeavor/indexer/Indexer.java \
+src/main/java/com/soundeavor/indexer/config/*.java \
+src/main/java/com/soundeavor/indexer/debug/*.java
 
 
 #echo "running.."
-cd ../bin
+cd bin
 #echo ""
 #echo ""
 #echo ""
@@ -23,4 +23,4 @@ java indexer.Indexer "$@"
 #echo ""
 #echo ""
 #echo "returning.."
-cd indexer
+cd ../

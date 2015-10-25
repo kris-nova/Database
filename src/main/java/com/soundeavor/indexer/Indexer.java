@@ -1,6 +1,6 @@
-package indexer;
+package com.soundeavor.indexer;
 
-import indexer.config.Config;
+import com.soundeavor.indexer.config.Config;
 
 /**
  * This is the indexer that will handle syncing data from Cassandra into
@@ -26,22 +26,22 @@ public class Indexer {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		indexer.config.Options.loadArgs(args);
-		Indexer.mode = indexer.config.Options.getMode();
+		com.soundeavor.indexer.config.Options.loadArgs(args);
+		Indexer.mode = com.soundeavor.indexer.config.Options.getMode();
 		switch (Indexer.mode) {
-		case indexer.config.Options.START:
+		case com.soundeavor.indexer.config.Options.START:
 			Indexer.start();
 			break;
-		case indexer.config.Options.STOP:
+		case com.soundeavor.indexer.config.Options.STOP:
 			Indexer.stop();
 			break;
-		case indexer.config.Options.RESTART:
+		case com.soundeavor.indexer.config.Options.RESTART:
 			Indexer.restart();
 			break;
-		case indexer.config.Options.RELOAD:
+		case com.soundeavor.indexer.config.Options.RELOAD:
 			Indexer.reload();
 			break;
-		case indexer.config.Options.STATUS:
+		case com.soundeavor.indexer.config.Options.STATUS:
 			Indexer.status();
 			break;
 		}

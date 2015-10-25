@@ -1,4 +1,4 @@
-package indexer.cassandra;
+package com.soundeavor.indexer.cassandra;
 
 /**
  * Okay leaving off here

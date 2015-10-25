@@ -1,4 +1,4 @@
-package indexer.debug;
+package com.soundeavor.indexer.debug;
 
 import java.util.Arrays;
 

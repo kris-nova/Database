@@ -1,4 +1,4 @@
-package indexer.config;
+package com.soundeavor.indexer.config;
 
 import java.util.Properties;
 import java.io.OutputStream;
