@@ -7,6 +7,8 @@
 #				..Kris
 ###
 
+INSTALL_DIR="/workspace"
+
 ##
 # Update our system first
 #
@@ -29,13 +31,13 @@ echo '...done'
 #
 echo '--- Installing Cassandra ---'
 yum install -y java
-cp -vp /workspace/Database/Install/Documents/Cassandra/datastax.repo /etc/yum.repos.d/datastax.repo
+cp -vp $INSTALL_DIR/Database/Install/Documents/Cassandra/datastax.repo /etc/yum.repos.d/datastax.repo
 yum -y install dsc20
 rm -rf /etc/cassandra/conf
 mkdir /etc/cassandra/conf
-cp -vp /workspace/Database/Install/Documents/Cassandra/cassandra.yaml /etc/cassandra/conf/cassandra.yaml #Cassandra Configure file
-cp -vp /workspace/Database/Install/Documents/Cassandra/log4j-server.properties /etc/cassandra/conf/log4j-server.properties #Cassandra log4j file
-cp -vp /workspace/Database/Install/Documents/Cassandra/cassandra /etc/init.d/cassandra #Cassandra init rc script
+cp -vp $INSTALL_DIR/Database/Install/Documents/Cassandra/cassandra.yaml /etc/cassandra/conf/cassandra.yaml #Cassandra Configure file
+cp -vp $INSTALL_DIR/Database/Install/Documents/Cassandra/log4j-server.properties /etc/cassandra/conf/log4j-server.properties #Cassandra log4j file
+cp -vp $INSTALL_DIR/Database/Install/Documents/Cassandra/cassandra /etc/init.d/cassandra #Cassandra init rc script
 service cassandra start
 service cassandra stop
 
@@ -46,7 +48,7 @@ service cassandra stop
 # 
 echo '--- Installing ElasticSearch ---'
 rpm --import http://packages.elasticsearch.org/GPG-KEY-elasticsearch
-cp -vp /workspace/Database/Install/Documents/ElasticSearch/elasticsearch.repo /etc/yum.repos.d/elasticsearch.repo
+cp -vp $INSTALL_DIR/Database/Install/Documents/ElasticSearch/elasticsearch.repo /etc/yum.repos.d/elasticsearch.repo
 sudo yum -y install elasticsearch
 service elasticsearch start
 service elasticsearch stop
